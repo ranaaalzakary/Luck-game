@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int choice;
+	printf("Enter amount of types you want to play game: ");
+	scanf("%d", &choice);
+	for(int i=0;i<choice;++i){
+    // An array of 10 integers is created
+    int arr[10];
+    //10 random integers are generated for the array
+    for (int i = 0; i < 10; i++)
+    {
+        arr[i] = (rand() % 10) + 1;
+    }
+
+    // Use a pointer p to point to the array
+    int *p = arr;
+    int idx;
+
+    // ask the user to pick an array index
+    printf("\nEnter an array index(0-9): ");
+    scanf("%d", &idx);
+
+    // Generate 0 or 1 randomly for the direction
+    int direction = rand() % 2;
+
+    // Find the value at idx
+    int value = arr[idx];
+
+    // Check if the direction is forward
+    if (direction == 1)
+    {
+        // Check if the new address of p is valid
+        if (value <= 9)
+        {
+            // Update pointer p
+            p = (p + value);
+            // Find the value at pointer p
+            printf("The value at new position is: %d\n", *p);
+            printf("The user is lucky!");
+        }
+        else
+            printf("The user is unlucky!");
+    }
+    // When the direction is zero
+    else
+    {
+        // The user cannot move even 1 step backward
+        printf("The user is unlucky!");
+    }
+	}
+}
